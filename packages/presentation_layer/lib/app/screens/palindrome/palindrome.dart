@@ -1,4 +1,5 @@
-import 'package:domain/domain.dart';
+
+import 'package:domain/usecases/palindrome_usecase_impl.dart';
 import 'package:flutter/material.dart';
 
 class Palindrome extends StatefulWidget {
