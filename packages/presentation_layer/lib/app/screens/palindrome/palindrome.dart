@@ -11,6 +11,8 @@ class Palindrome extends StatelessWidget {
       create: (context) => PalindromeCubit(),
       child: BlocBuilder<PalindromeCubit, PalindromeState>(
         builder: (context, state) {
+          final _cubit = context.read<PalindromeCubit>();
+
           return Scaffold(
             appBar: AppBar(),
             body: Column(
@@ -19,13 +21,13 @@ class Palindrome extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 50),
                   child: TextField(
-                    onChanged: context.read<PalindromeCubit>().updateCurrentInputValue
+                    onChanged: _cubit.updateCurrentInputValue
                   ),
                 ),
                 Text(state.verifyInfo),
                 ElevatedButton(
                   child: const Text('verify'),
-                  onPressed: context.read<PalindromeCubit>().verifyString,
+                  onPressed: _cubit.verifyString,
                 )
               ],
             ),
