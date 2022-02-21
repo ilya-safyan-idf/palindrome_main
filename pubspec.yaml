@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  equatable: ^2.0.3
   presentation_layer:
     path: packages/presentation_layer
 
