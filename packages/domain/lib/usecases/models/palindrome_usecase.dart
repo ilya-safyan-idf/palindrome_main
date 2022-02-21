@@ -1,3 +1,3 @@
 abstract class PalindromeUsecase {
-  bool palindromeChecking({required String value});
+  bool isPalindrome({required String value});
 }

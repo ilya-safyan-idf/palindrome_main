@@ -10,7 +10,7 @@ class Palindrome extends StatefulWidget {
 }
 
 class _PalindromeState extends State<Palindrome> {
-  final PalindromeUsecaseImpl _palindromeInteractor = PalindromeUsecaseImpl();
+  final PalindromeUsecaseImpl _palindromeUsecase = PalindromeUsecaseImpl();
   String _verifyInfo = 'Result';
   String _currentInputValue = '';
 
@@ -29,7 +29,7 @@ class _PalindromeState extends State<Palindrome> {
       return;
     }
 
-    final bool verifyResult = _palindromeInteractor.palindromeChecking(value: _currentInputValue);
+    final bool verifyResult = _palindromeUsecase.isPalindrome(value: _currentInputValue);
 
     setState(() {
       _verifyInfo = verifyResult.toString();
