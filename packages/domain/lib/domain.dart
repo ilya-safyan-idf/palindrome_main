@@ -1,3 +1,3 @@
 library domain;
 
-export 'interactors/interactors.dart';
+export 'usecases/palindrome_usecase_impl.dart';

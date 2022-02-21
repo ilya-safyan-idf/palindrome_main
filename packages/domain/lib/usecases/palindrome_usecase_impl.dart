@@ -1,8 +1,6 @@
+import 'package:domain/usecases/models/palindrome_usecase.dart';
 
-
-import 'package:domain/interactors/interactors.dart';
-
-class PalindromeInteractor implements Palindrome {
+class PalindromeUsecaseImpl implements PalindromeUsecase {
 
   @override
   bool palindromeChecking({required String value}) {

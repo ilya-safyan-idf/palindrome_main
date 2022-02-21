@@ -9,7 +9,7 @@ class Palindrome extends StatefulWidget {
 }
 
 class _PalindromeState extends State<Palindrome> {
-  final PalindromeInteractor _palindromeInteractor = PalindromeInteractor();
+  final PalindromeUsecaseImpl _palindromeInteractor = PalindromeUsecaseImpl();
   String _verifyInfo = 'Result';
   String _currentInputValue = '';
 
@@ -20,8 +20,6 @@ class _PalindromeState extends State<Palindrome> {
   }
 
   void _verifyString() {
-    if(_currentInputValue == 'Result') return;
-  
     if(_currentInputValue.isEmpty) {
       setState(() {
         _verifyInfo = 'Result';
