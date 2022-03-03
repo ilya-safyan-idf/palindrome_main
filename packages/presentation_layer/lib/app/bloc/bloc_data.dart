@@ -1,6 +1,6 @@
 class BlocData<D> {
-   bool? isLoading;
-   D? data;
+  bool? isLoading;
+  D? data;
 
   BlocData({
     this.isLoading,

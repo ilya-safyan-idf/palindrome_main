@@ -4,8 +4,8 @@ import 'package:presentation_layer/app/bloc/bloc_impl.dart';
 import 'package:presentation_layer/app/screens/palindrome/palindrome_bloc/palindrome_data.dart';
 
 abstract class PalindromeBloc extends Bloc {
-  factory PalindromeBloc(PalindromeUsecase palindromeUsecase) => 
-    _PalindromeBlocImpl(palindromeUsecase);
+  factory PalindromeBloc(PalindromeUsecase palindromeUsecase) =>
+      _PalindromeBlocImpl(palindromeUsecase);
 
   void updateState();
   void updateCurrentInputValue(String value);
@@ -15,7 +15,6 @@ abstract class PalindromeBloc extends Bloc {
 class _PalindromeBlocImpl extends BlocImpl implements PalindromeBloc {
   final PalindromeUsecase _palindromeUsecase;
   final PalindromeData _state = PalindromeData.init();
-
 
   _PalindromeBlocImpl(this._palindromeUsecase);
 
@@ -31,27 +30,28 @@ class _PalindromeBlocImpl extends BlocImpl implements PalindromeBloc {
   }
 
   @override
-  void updateState(){
+  void updateState() {
     super.handleData(
       data: _state,
     );
   }
 
   @override
-  void updateCurrentInputValue(String value){
+  void updateCurrentInputValue(String value) {
     _state.inputText = value;
     updateState();
   }
 
   @override
   void verifyString() {
-    if(_state.inputText.isEmpty) {
+    if (_state.inputText.isEmpty) {
       _state.verifyInfo = 'Result';
       updateState();
       return;
     }
 
-    final bool verifyResult = _palindromeUsecase.isPalindrome(value: _state.inputText);
+    final bool verifyResult =
+        _palindromeUsecase.isPalindrome(value: _state.inputText);
     _state.verifyInfo = verifyResult.toString();
     updateState();
   }

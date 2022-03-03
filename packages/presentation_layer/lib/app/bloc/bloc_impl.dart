@@ -11,10 +11,9 @@ class BlocImpl<D> implements Bloc<D> {
   Stream<BlocData<D?>> get dataStream => _streamController.stream;
 
   @override
-  void initState() {
-  }
+  void initState() {}
 
-  @override 
+  @override
   void dispose() {
     _streamController.close();
   }
