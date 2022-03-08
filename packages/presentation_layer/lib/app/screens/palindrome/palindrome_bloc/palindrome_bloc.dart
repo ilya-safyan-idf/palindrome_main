@@ -1,10 +1,10 @@
-import 'package:domain/usecases/models/palindrome_usecase.dart';
+import 'package:domain/usecase/palindrome_usecase_impl.dart';
 import 'package:presentation_layer/app/bloc/bloc.dart';
 import 'package:presentation_layer/app/bloc/bloc_impl.dart';
 import 'package:presentation_layer/app/screens/palindrome/palindrome_bloc/palindrome_data.dart';
 
 abstract class PalindromeBloc extends Bloc {
-  factory PalindromeBloc(PalindromeUsecase palindromeUsecase) =>
+  factory PalindromeBloc(PalindromeUsecaseImpl palindromeUsecase) =>
       _PalindromeBlocImpl(palindromeUsecase);
 
   void updateState();
@@ -13,7 +13,7 @@ abstract class PalindromeBloc extends Bloc {
 }
 
 class _PalindromeBlocImpl extends BlocImpl implements PalindromeBloc {
-  final PalindromeUsecase _palindromeUsecase;
+  final PalindromeUsecaseImpl _palindromeUsecase;
   final PalindromeData _state = PalindromeData.init();
 
   _PalindromeBlocImpl(this._palindromeUsecase);
@@ -50,8 +50,7 @@ class _PalindromeBlocImpl extends BlocImpl implements PalindromeBloc {
       return;
     }
 
-    final bool verifyResult =
-        _palindromeUsecase.isPalindrome(value: _state.inputText);
+    final bool verifyResult = _palindromeUsecase(params: _state.inputText);
     _state.verifyInfo = verifyResult.toString();
     updateState();
   }

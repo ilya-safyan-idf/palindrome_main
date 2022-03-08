@@ -1,12 +1,10 @@
-import 'package:domain/usecases/palindrome_usecase_impl.dart';
 import 'package:flutter/material.dart';
 import 'package:presentation_layer/app/bloc/bloc_data.dart';
+import 'package:presentation_layer/app/bloc/bloc_state.dart';
 import 'package:presentation_layer/app/screens/palindrome/palindrome_bloc/palindrome_bloc.dart';
 import 'package:presentation_layer/app/screens/palindrome/palindrome_bloc/palindrome_data.dart';
 
-class Palindrome extends StatelessWidget {
-  final PalindromeBloc bloc = PalindromeBloc(PalindromeUsecaseImpl());
-
+class Palindrome extends BlocStateless<PalindromeBloc> {
   Palindrome({Key? key}) : super(key: key);
 
   @override
