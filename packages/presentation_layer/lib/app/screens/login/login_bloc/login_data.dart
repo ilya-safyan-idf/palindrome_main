@@ -7,8 +7,8 @@ class LoginData {
   LoginData({
     this.verifyLoginStatus,
     this.verifyPasswordStatus,
-   required this.passwordValue,
-   required this.loginValue,
+    required this.passwordValue,
+    required this.loginValue,
   });
 
   factory LoginData.init() => LoginData(

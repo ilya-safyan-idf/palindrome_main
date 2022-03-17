@@ -6,10 +6,7 @@ class AuthRepository implements INetworkRepository {
   @override
   Future<PasswordVerifyRespone> passwordVerify(
       {required String password, required RegExp validationRule}) async {
-    print(password);
     final bool verifyResult = validationRule.hasMatch(password);
-    print(validationRule);
-    print(verifyResult);
 
     await Future.delayed(Duration(seconds: 2));
 

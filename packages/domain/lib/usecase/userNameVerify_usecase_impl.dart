@@ -10,8 +10,7 @@ class UserNameVerifyUsecaseImpl implements Usecase<LoginParams, Future<bool>> {
 
   @override
   Future<bool> call({required LoginParams params}) async {
-    final UserNameVerifyRespone response =
-        await _repository.userNameVerify(
+    final UserNameVerifyRespone response = await _repository.userNameVerify(
         login: params.login, validationRule: params.validRule);
 
     return Future.value(response.verifyUserName);
