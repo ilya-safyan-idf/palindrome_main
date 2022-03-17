@@ -15,7 +15,7 @@ class PalindromeData {
     inputText: '',
   );
 
-  PalindromeData copy() => PalindromeData(
+  PalindromeData copyWith() => PalindromeData(
     isPalindrome: isPalindrome,
     verifyInfo: verifyInfo,
     inputText: inputText,
