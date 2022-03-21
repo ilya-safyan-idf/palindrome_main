@@ -7,32 +7,8 @@
     {
       "name": "palindrome_main",
       "request": "launch",
-      "type": "dart"
-    },
-    {
-      "name": "palindrome_main (profile mode)",
-      "request": "launch",
       "type": "dart",
-      "flutterMode": "profile"
+      "flutterMode": "debug",
     },
-    {
-      "name": "domain",
-      "cwd": "packages/domain",
-      "request": "launch",
-      "type": "dart"
-    },
-    {
-      "name": "presentation_layer",
-      "cwd": "packages/presentation_layer",
-      "request": "launch",
-      "type": "dart"
-    },
-    {
-      "name": "presentation_layer (profile mode)",
-      "cwd": "packages/presentation_layer",
-      "request": "launch",
-      "type": "dart",
-      "flutterMode": "profile"
-    }
   ]
-}
+} 
