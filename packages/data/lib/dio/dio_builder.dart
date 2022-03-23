@@ -24,7 +24,3 @@ Dio dioBuilder({required String baseUrl, Map<String, dynamic>? headers}) {
 
   return dio;
 }
-
-void addInterceptor({required Dio dio, Interceptor? interceptor}) {
-  if (interceptor == null) return;
-}
