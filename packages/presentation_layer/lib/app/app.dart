@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:presentation_layer/app/screens/palindrome/palindrome.dart';
+import 'package:presentation_layer/app/screens/login/login.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -11,7 +11,7 @@ class App extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Palindrome(),
+      home: const Login(),
     );
   }
 }
