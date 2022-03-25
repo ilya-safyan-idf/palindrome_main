@@ -1,4 +1,5 @@
 import 'package:domain/repository/network_repository.dart';
+import 'package:domain/repository/palidrome_repository.dart';
 import 'package:domain/usecase/passwordVerify_usecase_impl.dart';
 import 'package:domain/usecase/palindrome_usecase_impl.dart';
 import 'package:domain/usecase/userNameVerify_usecase_impl.dart';
@@ -10,7 +11,7 @@ Future<void> initDomainModule() async {
 
 void _initUseCaseModule() {
   GetIt.I.registerFactory(
-    () => PalindromeUsecaseImpl(),
+    () => PalindromeUsecaseImpl(GetIt.I.get<IPalidromeRepository>()),
   );
 
   GetIt.I.registerFactory(

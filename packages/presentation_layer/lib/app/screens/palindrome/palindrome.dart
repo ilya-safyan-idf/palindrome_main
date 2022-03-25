@@ -17,6 +17,7 @@ class Palindrome extends BlocStateless<PalindromeBloc> {
           builder: (context, snapshot) {
             const String verifyDefault = 'Result';
             final BlocData? blocData = snapshot.data;
+            final bool? screenLoadStatus = blocData?.isLoading;
             final PalindromeData? screenData = blocData?.data;
             final String verifyResult = screenData is PalindromeData
                 ? screenData.verifyInfo
@@ -29,7 +30,9 @@ class Palindrome extends BlocStateless<PalindromeBloc> {
                   padding: const EdgeInsets.symmetric(horizontal: 50),
                   child: TextField(onChanged: bloc.updateCurrentInputValue),
                 ),
-                Text(verifyResult),
+                screenLoadStatus == true
+                    ? const CircularProgressIndicator()
+                    : Text(verifyResult),
                 ElevatedButton(
                   child: const Text('verify'),
                   onPressed: bloc.verifyString,

@@ -9,6 +9,7 @@ abstract class PalindromeBloc extends Bloc {
 
   void updateState();
   void updateCurrentInputValue(String value);
+  void updateLoadingStatus({required bool loading});
   void verifyString();
 }
 
@@ -33,7 +34,13 @@ class _PalindromeBlocImpl extends BlocImpl implements PalindromeBloc {
   void updateState() {
     super.handleData(
       data: _state,
+      isLoading: super.loadingStatus,
     );
+  }
+
+  @override
+  void updateLoadingStatus({required bool loading}) {
+    super.updateLoadingStatus(loading: loading);
   }
 
   @override
@@ -42,16 +49,24 @@ class _PalindromeBlocImpl extends BlocImpl implements PalindromeBloc {
     updateState();
   }
 
+  
+
   @override
-  void verifyString() {
+  void verifyString() async {
+    updateLoadingStatus(loading: true);
+
     if (_state.inputText.isEmpty) {
       _state.verifyInfo = 'Result';
+      updateLoadingStatus(loading: false);
       updateState();
       return;
     }
 
-    final bool verifyResult = _palindromeUsecase(params: _state.inputText);
+    final bool verifyResult =
+        await _palindromeUsecase(params: _state.inputText);
+
     _state.verifyInfo = verifyResult.toString();
+    updateLoadingStatus(loading: false);
     updateState();
   }
 
