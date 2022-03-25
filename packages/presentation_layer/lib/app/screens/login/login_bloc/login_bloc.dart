@@ -7,8 +7,6 @@ import 'package:domain/model/password_params.dart';
 import 'package:domain/model/login_params.dart';
 import 'package:presentation_layer/app/screens/login/model/login_values.dart';
 import 'package:presentation_layer/utils/constant/verify.dart' as constants;
-// import 'package:domain/model/passwordVerify_respone.dart';
-// import 'package:domain/model/userNameVerify_respone.dart';
 
 enum VerifyStatus { empty, filled, error }
 enum TypeOfInput { login, password }
@@ -75,7 +73,10 @@ class _LoginBlocImpl extends BlocImpl implements LoginBloc {
     final String passwordValue = _state.passwordValue;
 
     await onVerify(
-      loginValues: LoginValues(login: loginValue, password: passwordValue),
+      loginValues: LoginValues(
+        login: loginValue,
+        password: passwordValue,
+      ),
     );
 
     updateLoadingStatus(loading: false);
@@ -97,11 +98,14 @@ class _LoginBlocImpl extends BlocImpl implements LoginBloc {
     final String password = loginValues.password;
 
     changeLoginVerifyStatus(
-        verifyResult: login.isNotEmpty, baseError: constants.emptyLoginError);
+      verifyResult: login.isNotEmpty,
+      baseError: constants.emptyLoginError,
+    );
 
     changePasswordVerifyStatus(
-        verifyResult: password.isNotEmpty,
-        baseError: constants.emptyPasswordError);
+      verifyResult: password.isNotEmpty,
+      baseError: constants.emptyPasswordError,
+    );
 
     verifyResult = login.isEmpty || password.isEmpty;
 
@@ -128,7 +132,9 @@ class _LoginBlocImpl extends BlocImpl implements LoginBloc {
         await passwordUsecase(params: passwordParams);
 
     changeLoginVerifyStatus(
-        verifyResult: loginVerifyStatus, baseError: constants.baseLoginError);
+      verifyResult: loginVerifyStatus,
+      baseError: constants.baseLoginError,
+    );
 
     changePasswordVerifyStatus(
         verifyResult: passwordVerifyStatus,
@@ -142,13 +148,17 @@ class _LoginBlocImpl extends BlocImpl implements LoginBloc {
         verifyResult ? VerifyStatus.empty : VerifyStatus.filled);
   }
 
-  void changePasswordVerifyStatus(
-      {required bool verifyResult, required String baseError}) {
+  void changePasswordVerifyStatus({
+    required bool verifyResult,
+    required String baseError,
+  }) {
     _state.verifyPasswordStatus = verifyResult ? null : baseError;
   }
 
-  void changeLoginVerifyStatus(
-      {required bool verifyResult, required String baseError}) {
+  void changeLoginVerifyStatus({
+    required bool verifyResult,
+    required String baseError,
+  }) {
     _state.verifyLoginStatus = verifyResult ? null : baseError;
   }
 
