@@ -32,7 +32,10 @@ void _initServiceModule() {
 
 void _initRepositoryModule() {
   GetIt.I.registerFactory<INetworkRepository>(() => AuthRepository());
-  GetIt.I.registerFactory<IPalidromeRepository>(() => PalidromeRepository(
+  GetIt.I.registerFactory<IPalidromeRepository>(
+    () => PalidromeRepository(
       service: GetIt.I.get<ApiService>(),
-      interceptor: GetIt.I.get<PalidromeCacheInterceptor>()));
+      interceptor: GetIt.I.get<PalidromeCacheInterceptor>(),
+    ),
+  );
 }

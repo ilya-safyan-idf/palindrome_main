@@ -10,7 +10,7 @@ abstract class ApiService {
     ProgressCallback? onReceiveProgress,
   });
 
-  setInterceptor({required Interceptor interceptor});
+  addInterceptor({required Interceptor interceptor});
 }
 
 class _ApiService implements ApiService {
@@ -19,7 +19,7 @@ class _ApiService implements ApiService {
   _ApiService(this._dio);
 
   @override
-  setInterceptor({required Interceptor interceptor}) {
+  addInterceptor({required Interceptor interceptor}) {
     _dio.interceptors.add(interceptor);
   }
 

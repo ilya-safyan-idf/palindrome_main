@@ -12,9 +12,11 @@ class PalindromeUsecaseImpl implements Usecase<String, Future<bool>> {
     final String currentString = params.toLowerCase().trim();
     final PalidromeResponse response =
         await _repository.isPalidrome(string: currentString);
-    final bool isPalidrome = response.isPalidrome;
+    final bool? isPalidrome = response.isPalidrome;
 
-    return Future.value(isPalidrome);
+    return isPalidrome != null
+        ? Future.value(isPalidrome)
+        : Future.value(false);
   }
 
   @override

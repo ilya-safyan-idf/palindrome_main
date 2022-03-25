@@ -22,6 +22,7 @@ abstract class LoginBloc extends Bloc {
 
   onVerify({required LoginValues loginValues});
   void onChange({required String inputValue, required TypeOfInput inputType});
+  void updateLoadingStatus({required bool loading});
   void onLogin();
   void updateState();
 }
@@ -30,7 +31,6 @@ class _LoginBlocImpl extends BlocImpl implements LoginBloc {
   final PasswordVerifyUsecaseImpl passwordUsecase;
   final UserNameVerifyUsecaseImpl loginUsecase;
   final LoginData _state = LoginData.init();
-  bool _isLoading = false;
 
   _LoginBlocImpl({required this.passwordUsecase, required this.loginUsecase});
 
@@ -48,9 +48,14 @@ class _LoginBlocImpl extends BlocImpl implements LoginBloc {
   @override
   void updateState() {
     super.handleData(
-      isLoading: _isLoading,
+      isLoading: super.loadingStatus,
       data: _state,
     );
+  }
+
+  @override
+  void updateLoadingStatus({required bool loading}) {
+    super.updateLoadingStatus(loading: loading);
   }
 
   @override
@@ -150,10 +155,5 @@ class _LoginBlocImpl extends BlocImpl implements LoginBloc {
   void changeLoginVerifyStatus(
       {required bool verifyResult, required String baseError}) {
     _state.verifyLoginStatus = verifyResult ? null : baseError;
-  }
-
-  void updateLoadingStatus({required bool loading}) {
-    _isLoading = loading;
-    updateState();
   }
 }

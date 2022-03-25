@@ -1,5 +1,5 @@
 class PalidromeResponse {
-  final bool isPalidrome;
+  bool? isPalidrome;
 
   PalidromeResponse({required this.isPalidrome});
 

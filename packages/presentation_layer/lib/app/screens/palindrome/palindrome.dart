@@ -30,7 +30,7 @@ class Palindrome extends BlocStateless<PalindromeBloc> {
                   padding: const EdgeInsets.symmetric(horizontal: 50),
                   child: TextField(onChanged: bloc.updateCurrentInputValue),
                 ),
-                screenLoadStatus!
+                screenLoadStatus == true
                     ? const CircularProgressIndicator()
                     : Text(verifyResult),
                 ElevatedButton(
