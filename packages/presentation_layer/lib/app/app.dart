@@ -3,7 +3,7 @@ import 'package:presentation_layer/app/screens/palindrome/palindrome.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
-
+//2
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
